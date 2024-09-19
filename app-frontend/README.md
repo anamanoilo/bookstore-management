@@ -1,8 +1,13 @@
-# React + Vite
+# BlueGreen Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Book Inventory Management system.
 
-Currently, two official plugins are available:
+Vite is used for app launch during development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Development start
+`npm install`  
+`npm run dev`
+
+### Production files
+`npm run build`  
+The artifact is found in `./dist` 

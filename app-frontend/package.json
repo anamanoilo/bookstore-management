@@ -4,7 +4,7 @@
   "author": "Glib Ischenko",
   "private": true,
   "license": "UNLICENSED",
-  "version": "1.0.0-prerelease.1",
+  "version": "1.0.0-prerelease.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
