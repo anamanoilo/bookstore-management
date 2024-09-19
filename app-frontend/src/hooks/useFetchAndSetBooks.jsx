@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getBooks } from "../services/booksAPI";
 
-export default function useFetchBooks() {
-  const [data, setData] = useState(null);
+export default function useFetchAndSetBooks() {
+  const [books, setBooks] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -11,8 +11,9 @@ export default function useFetchBooks() {
       try {
         setLoading(true);
         const data = await getBooks();
-        setData(data);
+        setBooks(data);
       } catch (err) {
+        console.error("Error fetching books:", err);
         setError(err);
       } finally {
         setLoading(false);
@@ -20,5 +21,5 @@ export default function useFetchBooks() {
     })();
   }, []);
 
-  return { data, error, loading };
+  return { books, setBooks, error, loading };
 }

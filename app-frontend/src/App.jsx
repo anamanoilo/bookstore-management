@@ -1,36 +1,43 @@
 import { useState, useEffect } from "react";
-import useFetchBooks from "./hooks/useFetchBooks";
+import useFetchAndSetBooks from "./hooks/useFetchAndSetBooks";
 import Button from "./components/Button/Button";
 import Container from "./components/Container";
 import BookList from "./components/BookList";
 import BookForm from "./components/BookForm";
 import Loader from "./components/Loader";
+import { addBook, deleteBook, updateBook } from "./services/booksAPI";
 
 function App() {
-  const { data, error, loading } = useFetchBooks();
+  const { books, setBooks, error, loading } = useFetchAndSetBooks();
   const [currentBook, setCurrentBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    if (data) {
-      setBooks(data);
+  const handleAddBook = async (newBook) => {
+    try {
+      const addedBook = await addBook(newBook);
+      setBooks([...books, addedBook]);
+    } catch (error) {
+      console.error("Error adding book:", error);
     }
-  }, [data]);
-
-  const addBook = (newBook) => {
-    setBooks([...books, { ...newBook, id: books.length + 1 }]);
   };
 
-  const updateBook = (updatedBook) => {
-    setBooks(
-      books.map((book) => (book.id === updatedBook.id ? updatedBook : book))
-    );
-    setCurrentBook(null);
+  const handleUpdateBook = async (updatedBook) => {
+    try {
+      const updated = await updateBook(updatedBook);
+      setBooks(books.map((book) => (book.id === updated.id ? updated : book)));
+      setCurrentBook(null);
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
   };
 
-  const deleteBook = (id) => {
-    setBooks(books.filter((book) => book.id !== id));
+  const handleDeleteBook = async (id) => {
+    try {
+      await deleteBook(id);
+      setBooks(books.filter((book) => book.id !== id));
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
   };
 
   const editBook = (book) => {
@@ -48,7 +55,11 @@ function App() {
         updateBook={updateBook}
         currentBook={currentBook}
       />
-      {loading ? <Loader /> : <BookList books={books} error={error} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <BookList books={books} error={error} editBook={editBook} />
+      )}
     </Container>
   );
 }
