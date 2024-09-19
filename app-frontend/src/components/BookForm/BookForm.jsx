@@ -95,7 +95,7 @@ const BookForm = ({ addBook, updateBook, currentBook }) => {
           required
         />
         <Button type="submit" btnClass="actionButton">
-          {currentBook ? "Update Book" : "Add Book"}
+          {currentBook ? "UPDATE BOOK" : "ADD BOOK"}
         </Button>
       </form>
     </div>
