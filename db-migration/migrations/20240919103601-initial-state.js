@@ -1,6 +1,6 @@
 module.exports = {
   async up(db, client) {
-    db.collection("books").insertMany([
+    await db.collection("books").insertMany([
       [
         {
           title: "Jurassic World: Fallen Kingdom",
