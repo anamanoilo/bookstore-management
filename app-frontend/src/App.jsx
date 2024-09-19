@@ -21,10 +21,12 @@ function App() {
     }
   };
 
-  const handleUpdateBook = async (updatedBook) => {
+  const handleUpdateBook = async (bookToUpdate) => {
     try {
-      const updated = await updateBook(updatedBook);
-      setBooks(books.map((book) => (book.id === updated.id ? updated : book)));
+      const updatedBook = await updateBook(bookToUpdate);
+      setBooks(
+        books.map((book) => (book._id === updatedBook._id ? updatedBook : book))
+      );
       setCurrentBook(null);
     } catch (error) {
       console.error("Error updating book:", error);
@@ -34,7 +36,7 @@ function App() {
   const handleDeleteBook = async (id) => {
     try {
       await deleteBook(id);
-      setBooks(books.filter((book) => book.id !== id));
+      setBooks(books.filter((book) => book._id !== id));
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -51,14 +53,19 @@ function App() {
         ADD BOOK
       </Button>
       <BookForm
-        addBook={addBook}
-        updateBook={updateBook}
+        handleAddBook={handleAddBook}
+        handleUpdateBook={handleUpdateBook}
         currentBook={currentBook}
       />
       {loading ? (
         <Loader />
       ) : (
-        <BookList books={books} error={error} editBook={editBook} />
+        <BookList
+          books={books}
+          error={error}
+          editBook={editBook}
+          handleDeleteBook={handleDeleteBook}
+        />
       )}
     </Container>
   );

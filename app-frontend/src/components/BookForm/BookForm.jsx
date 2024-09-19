@@ -22,7 +22,7 @@ const reducer = (state, action) => {
   }
 };
 
-const BookForm = ({ addBook, updateBook, currentBook }) => {
+const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { title, author, quantity, price } = state;
@@ -51,9 +51,9 @@ const BookForm = ({ addBook, updateBook, currentBook }) => {
     };
 
     if (currentBook) {
-      updateBook({ ...currentBook, ...newBook });
+      handleUpdateBook({ ...currentBook, ...newBook });
     } else {
-      addBook(newBook);
+      handleAddBook(newBook);
     }
     dispatch({ type: "RESET" });
   };
@@ -103,8 +103,8 @@ const BookForm = ({ addBook, updateBook, currentBook }) => {
 };
 
 BookForm.propTypes = {
-  addBook: PropTypes.func,
-  updateBook: PropTypes.func,
+  handleAddBook: PropTypes.func,
+  handleUpdateBook: PropTypes.func,
   currentBook: PropTypes.shape({
     title: PropTypes.string,
     author: PropTypes.string,

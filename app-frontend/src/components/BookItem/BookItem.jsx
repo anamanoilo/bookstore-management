@@ -11,14 +11,14 @@ export const BookItem = ({ title, author, quantity, price, id }) => {
         <p>price: ${price}</p>
         <p>quantity: {quantity}</p>
       </div>
-      <div>
+      {/* <div>
         <Button btnClass="editButton" type="button">
           EDIT
         </Button>
         <Button btnClass="deleteButton" type="button">
           DELETE
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };
