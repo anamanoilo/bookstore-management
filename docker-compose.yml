@@ -11,7 +11,7 @@ services:
     depends_on:
       - mongo
     environment:
-      - DB_URL=mongodb://mongo:27017/local
+      - DB_URI=mongodb://mongo:27017/local
       - DB_NAME=local
       - PORT=3001
   migrations:
