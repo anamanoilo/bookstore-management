@@ -6,9 +6,9 @@ const BookList = ({ books, error }) => {
   if (error) {
     return <h3>There is a server error</h3>;
   }
-  if (books) {
+  if (books.length > 0) {
     return (
-      {books.length > 0 ? (<ul>
+      <ul>
         {books.map(({ id, title, author, price, quantity }) => (
           <li key={id} className={s.bookItem}>
             <BookItem
@@ -20,9 +20,7 @@ const BookList = ({ books, error }) => {
             />
           </li>
         ))}
-      </ul>): (<p>No books available.</p>
-) }
-      
+      </ul>
     );
   }
 };

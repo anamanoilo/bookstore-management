@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetchBooks from "./hooks/useFetchBooks";
 import Button from "./components/Button/Button";
 import Container from "./components/Container";
@@ -11,6 +11,12 @@ function App() {
   const [currentBook, setCurrentBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setBooks(data);
+    }
+  }, [data]);
 
   const addBook = (newBook) => {
     setBooks([...books, { ...newBook, id: books.length + 1 }]);
@@ -42,7 +48,7 @@ function App() {
         updateBook={updateBook}
         currentBook={currentBook}
       />
-      {loading ? <Loader /> : <BookList books={data} error={error} />}
+      {loading ? <Loader /> : <BookList books={books} error={error} />}
     </Container>
   );
 }
