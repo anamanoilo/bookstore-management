@@ -20,11 +20,30 @@ export class BooksService {
     return this.bookModel.find().exec();
   }
 
-  async findOne(id: number): Promise<Book> {
-    return this.bookModel.findOne({ _id: id }).exec();
+  async findOne(id: string): Promise<Book> {
+    const book = await this.bookModel.findById({ _id: id }).exec();
+    if (!book) {
+      throw new Error(`No Results for ${id}`);
+    }
+    return book;
   }
 
-  async update(id: number, updateBookDto: UpdateBookDto) {
+  async findByAuthor(author: string): Promise<Books> {
+    return this.bookModel
+      .aggregate([
+        {
+          $match: {
+            author: {
+              $regex: author,
+              $options: 'i',
+            },
+          },
+        },
+      ])
+      .exec();
+  }
+
+  async update(id: string, updateBookDto: UpdateBookDto) {
     const updatedBook = await this.bookModel.updateOne(
       { _id: id },
       updateBookDto,
@@ -32,7 +51,7 @@ export class BooksService {
     return updatedBook;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const deletedBook = await this.bookModel
       .findByIdAndDelete({ _id: id })
       .exec();

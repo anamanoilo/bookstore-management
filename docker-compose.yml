@@ -3,7 +3,7 @@ services:
     build: 
       context: ./app-frontend
       args: 
-        API_URL: http://localhost:3001
+        VITE_API_URL: "http://localhost:3001"
     ports:
       - 3000:3000
     depends_on:
@@ -19,6 +19,7 @@ services:
       - ./:/code
     depends_on:
       - mongo
+      - migrations
     environment:
       - DB_URI=mongodb://mongo:27017/local
       - DB_NAME=local

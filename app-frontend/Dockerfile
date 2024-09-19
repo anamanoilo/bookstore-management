@@ -1,17 +1,10 @@
-FROM node:lts-alpine AS client-dependencies
-
+FROM node:lts-alpine AS client-builder
 WORKDIR /app
 COPY package.json package-lock.json  ./
-
 RUN npm ci
-
-FROM node:lts-alpine AS client-builder
-
-WORKDIR /app
-COPY --from=client-dependencies /app/node_modules ./node_modules
 COPY . .
 ENV NODE_ENV=production
-ARG API_URL
+ARG VITE_API_URL
 RUN npm run build
 
 FROM node:lts-alpine AS client-production-runner
