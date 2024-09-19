@@ -25,11 +25,14 @@ function App() {
     try {
       const updatedBook = await updateBook(bookToUpdate);
       setBooks(
-        books.map((book) => (book._id === updatedBook._id ? updatedBook : book))
+        books.map((book) =>
+          book._id === updatedBook._id ? updatedBook : book,
+        ),
       );
-      setCurrentBook(null);
     } catch (error) {
       console.error("Error updating book:", error);
+    } finally {
+      setCurrentBook(null);
     }
   };
 
