@@ -1,0 +1,31 @@
+services:
+  app-backend:
+    restart: always
+    build: ./app-backend
+    ports:
+      - 3001:3001
+    expose:
+      - 3001
+    volumes:
+      - ./:/code
+    depends_on:
+      - mongo
+    environment:
+      - DB_URL=mongodb://mongo:27017/local
+      - DB_NAME=local
+      - PORT=3001
+  migrations:
+    build: ./db-migration
+    depends_on:
+      - mongo
+    environment:
+      - DB_URL=mongodb://mongo:27017/local
+      - DB_NAME=local  
+  mongo:
+    image: mongo
+    expose:
+      - 27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+ mongodb:

@@ -1,0 +1,7 @@
+jest.config.ts
+dist
+node_modules
+.git
+.deploy
+test
+.env
