@@ -1,19 +1,14 @@
 
-const API_URL = "http://localhost:3001"; 
+const API_URL = process.env.API_URL;
 
-
-export const fetchBooks = async () => {
-  try {
-    const response = await fetch(`${API_URL}/books`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch books");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching books:", error);
-    throw error;
+export const getBooks = async () => {
+  const response = await fetch(`${API_URL}/books`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch books");
   }
+  const data = await response.json();
+  console.log("data:", data);
+  return data;
 };
 
 export const addBook = async (newBook) => {
