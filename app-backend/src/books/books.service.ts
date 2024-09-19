@@ -44,10 +44,14 @@ export class BooksService {
   }
 
   async update(id: string, updateBookDto: UpdateBookDto) {
-    const updatedBook = await this.bookModel.updateOne(
+    const updatedBook = await this.bookModel.findOneAndUpdate(
       { _id: id },
       updateBookDto,
+      { returnNewDocument: true },
     );
+    if (!updatedBook) {
+      throw new Error(`No Books to update with id ${id}`);
+    }
     return updatedBook;
   }
 

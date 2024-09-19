@@ -52,12 +52,17 @@ export class BooksController {
   }
 
   @Patch(':id')
-  @UsePipes(ValidationPipe)
-  update(
-    @Param(new ValidationPipe()) { id }: IdParam,
+  @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+  async update(
+    @Param()
+    { id }: IdParam,
     @Body() updateBookDto: UpdateBookDto,
   ) {
-    return this.booksService.update(id, updateBookDto);
+    try {
+      return await this.booksService.update(id, updateBookDto);
+    } catch (error) {
+      throw new NotFoundException(error);
+    }
   }
 
   @Delete(':id')

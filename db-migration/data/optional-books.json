@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Brave New World",
+    "quantity": 66,
+    "author": "Aldous Huxley",
+    "price": 8.99
+  },
+  {
+    "title": "The Hobbit",
+    "quantity": 88,
+    "author": "J. R. R. Tolkien",
+    "price": 11.49
+  },
+  {
+    "title": "The Road",
+    "quantity": 30,
+    "author": "Cormac McCarthy",
+    "price": 10.49
+  },
+  {
+    "title": "Fahrenheit 451",
+    "quantity": 75,
+    "author": "Ray Bradbury",
+    "price": 9.49
+  },
+  {
+    "title": "The Girl on the Train",
+    "quantity": 50,
+    "author": "Paula Hawkins",
+    "price": 10.49
+  },
+  {
+    "title": "Gone Girl",
+    "quantity": 45,
+    "author": "Gillian Flynn",
+    "price": 12.99
+  },
+  {
+    "title": "Dune",
+    "quantity": 90,
+    "author": "Frank Herbert",
+    "price": 14.99
+  },
+  {
+    "title": "The Shining",
+    "quantity": 65,
+    "author": "Stephen King",
+    "price": 11.99
+  },
+  {
+    "title": "Dracula",
+    "quantity": 48,
+    "author": "Bram Stoker",
+    "price": 9.99
+  },
+  {
+    "title": "Frankenstein",
+    "quantity": 52,
+    "author": "Mary Shelley",
+    "price": 8.49
+  },
+  {
+    "title": "The Hunger Games",
+    "quantity": 105,
+    "author": "Suzanne Collins",
+    "price": 12.49
+  },
+  {
+    "title": "The Da Vinci Code",
+    "quantity": 60,
+    "author": "Dan Brown",
+    "price": 10.99
+  },
+  {
+    "title": "The Kite Runner",
+    "quantity": 85,
+    "author": "Khaled Hosseini",
+    "price": 13.99
+  },
+  {
+    "title": "The Book Thief",
+    "quantity": 77,
+    "author": "Markus Zusak",
+    "price": 9.99
+  },
+  {
+    "title": "Life of Pi",
+    "quantity": 40,
+    "author": "Yann Martel",
+    "price": 10.49
+  },
+  {
+    "title": "The Maze Runner",
+    "quantity": 68,
+    "author": "James Dashner",
+    "price": 11.49
+  }
+]
