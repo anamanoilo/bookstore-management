@@ -28,12 +28,17 @@ export class BooksController {
   }
 
   @Get()
-  @UsePipes(ValidationPipe)
-  findAll(@Query(new ValidationPipe()) { author }: GetBookDto) {
-    if (author) {
-      return this.booksService.findByAuthor(author);
-    }
+  findAll() {
     return this.booksService.findAll();
+  }
+
+  @Get('/filters')
+  @UsePipes(ValidationPipe)
+  findAllOrFilterByAuthor(
+    @Query(new ValidationPipe())
+    { author }: GetBookDto,
+  ) {
+    return this.booksService.findByAuthor(author);
   }
 
   @Get(':id')
