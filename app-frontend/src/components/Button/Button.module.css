@@ -1,21 +1,38 @@
 .actionButton {
-  background-color: #a4ea34;
   cursor: pointer;
   outline: none;
-  border: none;
-  padding: 9px 20px;
+  border: 1px solid transparent;
+  padding: 0.5em 1.25em;
   color: #024153;
-  transition: background-color 250ms linear, box-shadow 250ms linear,
-  color 250ms linear;
-  border-radius: 20px;
-  font-size: 16px;
+  background-color: var(--accent-cl);
+  transition: background-color 250ms linear,
+  color 250ms linear, border-color 250ms linear;
+  border-radius: 1.25em;
+  font-size: 1em;
 }
 
 .actionButton:focus, .actionButton:hover {
   color: #fff;
   background-color: #76a8bd;
+  border-color: #76a8bd;
 }
 
 .editButton {
   composes: actionButton;
+  color: #fff;
+  background-color: #76a8bd;
+}
+
+
+.deleteButton {
+  composes: actionButton;
+  color: #fff;
+  background-color: #024153;
+}
+
+.editButton:focus, .editButton:hover, .deleteButton:focus, .deleteButton:hover {
+  color: #024153;
+  background-color: transparent;
+  border-color: #024153;
+  
 }

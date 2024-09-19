@@ -1,5 +1,4 @@
-
-const API_URL = process.env.API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const getBooks = async () => {
   const response = await fetch(`${API_URL}/books`);
@@ -59,7 +58,7 @@ export const deleteBook = async (id) => {
     if (!response.ok) {
       throw new Error("Failed to delete book");
     }
-    return id; 
+    return id;
   } catch (error) {
     console.error("Error deleting book:", error);
     throw error;

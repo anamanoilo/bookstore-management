@@ -1,26 +1,28 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-import useFetchBooks from "../../hooks/useFetchBooks";
-import Loader from "../Loader";
 
-const BookList = () => {
-  const { books, error, loading } = useFetchBooks();
-  if (loading) {
-    return <Loader />;
-  }
+import s from "./BookList.module.css";
+import BookItem from "../BookItem";
+
+const BookList = ({ books, error }) => {
   if (error) {
     return <h3>There is a server error</h3>;
   }
-  if (books?.length > 0) {
+  if (books) {
     return (
-      <div>
-        BookList
-        <ul>
-          {books.map((book) => (
-            <li key={book.id}>{book.title}</li>
-          ))}
-        </ul>
-      </div>
+      {books.length > 0 ? (<ul>
+        {books.map(({ id, title, author, price, quantity }) => (
+          <li key={id} className={s.bookItem}>
+            <BookItem
+              title={title}
+              price={price}
+              author={author}
+              quantity={quantity}
+              id={id}
+            />
+          </li>
+        ))}
+      </ul>): (<p>No books available.</p>
+) }
+      
     );
   }
 };
