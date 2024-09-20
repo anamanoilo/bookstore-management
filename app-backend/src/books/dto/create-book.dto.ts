@@ -2,17 +2,17 @@ import {
   IsCurrency,
   IsInt,
   IsNumber,
-  IsPositive,
   IsString,
   MaxLength,
+  Min,
   MinLength,
 } from 'class-validator';
 
 export class CreateBookDto {
-  @MinLength(2, {
+  @MinLength(1, {
     message: 'Title is too short',
   })
-  @MaxLength(50, {
+  @MaxLength(200, {
     message: 'Title is too long',
   })
   @IsString()
@@ -24,7 +24,7 @@ export class CreateBookDto {
   @IsCurrency({ require_symbol: false })
   price: number;
 
-  @IsPositive()
+  @Min(0)
   @IsNumber()
   @IsInt()
   quantity: number;

@@ -47,7 +47,7 @@ export class BooksService {
     const updatedBook = await this.bookModel.findOneAndUpdate(
       { _id: id },
       updateBookDto,
-      { returnNewDocument: true },
+      { returnNewDocument: true, returnDocument: 'after' },
     );
     if (!updatedBook) {
       throw new Error(`No Books to update with id ${id}`);
