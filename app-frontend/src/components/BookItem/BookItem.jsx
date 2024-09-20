@@ -1,6 +1,6 @@
-import React from "react";
-import s from "./BookItem.module.css";
-import Button from "../Button/Button";
+import PropTypes from 'prop-types';
+import s from './BookItem.module.css';
+import Button from '../Button/Button';
 
 export const BookItem = ({ book, editBook, handleDeleteBook }) => {
   const { title, author, quantity, price } = book;
@@ -30,6 +30,18 @@ export const BookItem = ({ book, editBook, handleDeleteBook }) => {
       </div>
     </div>
   );
+};
+
+BookItem.propTypes = {
+  editBook: PropTypes.func.isRequired,
+  handleDeleteBook: PropTypes.func.isRequired,
+  book: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
 };
 
 export default BookItem;

@@ -7,6 +7,7 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
   const nodeRef = useRef(null);
 
   if (error) {
+    console.log('error:', error);
     return <h3>There is a server error</h3>;
   }
   if (Array.isArray(books)) {
@@ -35,6 +36,5 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
   }
 };
 
-BookList.propTypes = {};
 
 export default BookList;

@@ -1,13 +1,13 @@
-import React, { useReducer, useEffect } from "react";
-import PropTypes from "prop-types";
-import Button from "../Button";
+import React, { useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Button from '../Button';
 import s from './BookForm.module.css';
 
 const initialState = {
   title: '',
   author: '',
-  quantity: '',
   price: '',
+  quantity: 0,
 };
 
 const reducer = (state, action) => {
@@ -48,7 +48,7 @@ const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
       title,
       author,
       quantity: parseInt(quantity, 10),
-      price: parseFloat(price).toString(),
+      price: price,
     };
 
     if (currentBook) {
@@ -56,7 +56,6 @@ const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
     } else {
       handleAddBook(newBook);
     }
-    dispatch({ type: 'RESET' });
   };
 
   return (
@@ -109,7 +108,7 @@ const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
           <input
             type="number"
             name="quantity"
-            min="0"
+            min="1"
             step="1"
             placeholder="Enter quantity"
             value={quantity}

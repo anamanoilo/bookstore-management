@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import useFetchAndSetBooks from './hooks/useFetchAndSetBooks';
 import Button from './components/Button/Button';
 import Container from './components/Container';
@@ -7,12 +8,32 @@ import BookForm from './components/BookForm';
 import Loader from './components/Loader';
 import Modal from './components/Modal';
 import { addBook, deleteBook, updateBook } from './services/booksAPI';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
   const { books, setBooks, error, loading } = useFetchAndSetBooks();
   const [currentBook, setCurrentBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(null);
+
+  useEffect(() => {
+    if (errorStatus) {
+      let message = '';
+      switch (errorStatus) {
+        case 404:
+          message = 'Error: Not found';
+          break;
+        case 400:
+          message = 'Error: Please check your data and try again';
+          break;
+        default:
+          message = 'Error: Something went wrong';
+      }
+      toast.error(message);
+      setErrorStatus(null);
+    }
+  }, [errorStatus]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -30,8 +51,10 @@ function App() {
       const addedBook = await addBook(newBook);
       setBooks([...books, addedBook]);
       closeModal();
+      toast.success('Book added successfully');
     } catch (error) {
       console.error('Error adding book:', error);
+      setErrorStatus(error.status);
     }
   };
 
@@ -43,11 +66,11 @@ function App() {
           book._id === updatedBook._id ? updatedBook : book,
         ),
       );
+      closeModal();
+      toast.success('Book updated successfully');
     } catch (error) {
       console.error('Error updating book:', error);
-    } finally {
-      setCurrentBook(null);
-      closeModal();
+      setErrorStatus(error.status);
     }
   };
 
@@ -55,8 +78,10 @@ function App() {
     try {
       await deleteBook(id);
       setBooks(books.filter((book) => book._id !== id));
+      toast.success('Book deleted successfully');
     } catch (error) {
       console.error('Error deleting book:', error);
+      setErrorStatus(error.status);
     }
   };
 
@@ -93,6 +118,7 @@ function App() {
           handleDeleteBook={handleDeleteBook}
         />
       )}
+      <ToastContainer />
     </Container>
   );
 }
