@@ -1,9 +1,11 @@
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import s from "./BookList.module.css";
+import { useRef } from 'react';
+import s from './BookList.module.css';
 import BookItem from '../BookItem';
 
 const BookList = ({ books, error, handleDeleteBook, editBook }) => {
+  const nodeRef = useRef(null);
+
   if (error) {
     return <h3>There is a server error</h3>;
   }
@@ -11,8 +13,13 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
     return books.length > 0 ? (
       <TransitionGroup component="ul" className={s.bookList}>
         {books.map((book) => (
-          <CSSTransition key={book._id} timeout={500} classNames={{ ...s }}>
-            <li className={s.bookItem}>
+          <CSSTransition
+            key={book._id}
+            timeout={500}
+            nodeRef={nodeRef}
+            classNames={{ ...s }}
+          >
+            <li className={s.bookItem} ref={nodeRef}>
               <BookItem
                 book={book}
                 handleDeleteBook={handleDeleteBook}
