@@ -1,6 +1,25 @@
 .wrapper {
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
   padding: 1.25em;
   color: #333333;
   background-color: #e0e5e8;
   border-radius: 0.5em;
+}
+
+
+.buttonsContainer {
+  display: flex;       
+  gap: 0.25em;        
+}
+
+
+@media (max-width: 767px) {
+  .wrapper {
+    display: block;
+  }
+  .buttonsContainer{
+    margin-top: 0.5em;
+  }
 }

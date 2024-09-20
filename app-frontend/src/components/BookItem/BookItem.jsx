@@ -7,12 +7,12 @@ export const BookItem = ({ book, editBook, handleDeleteBook }) => {
   return (
     <div className={s.wrapper}>
       <div>
-        <h5>{title}</h5>
+        <h4>{title}</h4>
         <p>author: {author}</p>
         <p>price: ${price}</p>
         <p>quantity: {quantity}</p>
       </div>
-      <div>
+      <div className={s.buttonsContainer}>
         <Button
           btnClass="editButton"
           type="button"
