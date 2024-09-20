@@ -7,7 +7,6 @@ export const getBooks = async () => {
     throw new Error("Failed to fetch books");
   }
   const data = await response.json();
-  console.log("data:", data);
   return data;
 };
 

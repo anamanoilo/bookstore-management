@@ -1,11 +1,11 @@
-.title{
-margin-bottom: 0.7em;
-text-align: center;
+.title {
+  margin-bottom: 0.7em;
+  text-align: center;
 }
 
 .form {
-display: grid;
-gap: 0.65em;
+  display: grid;
+  gap: 0.5em;
 }
 
 .label {
@@ -16,11 +16,11 @@ gap: 0.65em;
 .input {
   display: block;
   width: 100%;
-padding: 0.5em;
-border-radius: 0.5em;
-border: 1px solid #76a8bd;
-outline: none;
-transition: box-shadow 250ms linear;
+  padding: 0.6em 1em;
+  border-radius: 1.25em;
+  border: 1px solid #76a8bd;
+  outline: none;
+  transition: box-shadow 250ms linear;
 }
 
 .input:focus {

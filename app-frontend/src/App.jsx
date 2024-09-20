@@ -7,6 +7,7 @@ import BookForm from './components/BookForm';
 import Loader from './components/Loader';
 import Modal from './components/Modal';
 import { addBook, deleteBook, updateBook } from './services/booksAPI';
+import './App.css';
 
 function App() {
   const { books, setBooks, error, loading } = useFetchAndSetBooks();
@@ -16,8 +17,8 @@ function App() {
   const openModal = () => {
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
-  }; 
-    
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentBook(null);
@@ -66,19 +67,22 @@ function App() {
 
   return (
     <Container>
-      <h2>Bookstore Inventory Manager</h2>
-      <Button btnClass="actionButton" type="button" onClick={openModal}>
-        ADD BOOK
-      </Button>
-      {isModalOpen && (
-        <Modal closeModal={closeModal}>
-          <BookForm
-            handleAddBook={handleAddBook}
-            handleUpdateBook={handleUpdateBook}
-            currentBook={currentBook}
-          />
-        </Modal>
-      )}
+      <h2 className="title">Bookstore Inventory Manager</h2>
+      <div className="addBookSection">
+        <Button btnClass="actionButton" type="button" onClick={openModal}>
+          ADD BOOK
+        </Button>
+        {isModalOpen && (
+          <Modal closeModal={closeModal}>
+            <BookForm
+              handleAddBook={handleAddBook}
+              handleUpdateBook={handleUpdateBook}
+              currentBook={currentBook}
+            />
+          </Modal>
+        )}
+      </div>
+
       {loading ? (
         <Loader />
       ) : (
