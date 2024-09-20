@@ -27,3 +27,4 @@ The app was done in a limited time frame, so leaves out a few things.
 * omit __v property on GET responses
 * change _id to id in API responses
 * additional validation on Frontend for input fields before sending the API request
+* switch Frontend to Typescript
