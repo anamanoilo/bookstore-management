@@ -13,10 +13,15 @@ function App() {
   const [currentBook, setCurrentBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  }; 
+    
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentBook(null);
+    document.body.style.overflow = 'unset';
   };
 
   const handleAddBook = async (newBook) => {

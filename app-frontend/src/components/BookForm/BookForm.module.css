@@ -1,15 +1,29 @@
+.title{
+margin-bottom: 0.7em;
+text-align: center;
+}
+
 .form {
 display: grid;
 gap: 0.65em;
 }
 
+.label {
+  display: block;
+  line-height: 1.5;
+}
+
 .input {
+  display: block;
+  width: 100%;
 padding: 0.5em;
 border-radius: 0.5em;
 border: 1px solid #76a8bd;
 outline: none;
+transition: box-shadow 250ms linear;
 }
 
 .input:focus {
   border: 1px solid #024153;
+  box-shadow: 0 0 5px rgba(118, 168, 189, 0.8);
 }

@@ -61,48 +61,63 @@ const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
 
   return (
     <div>
-      <h3>{currentBook ? 'Update Book' : 'Add a new Book'}</h3>
+      <h3 className={s.title}>
+        {currentBook ? 'Update Book' : 'Add a new Book'}
+      </h3>
       <form onSubmit={handleSubmit} className={s.form}>
-        <input
-          type="text"
-          name="title"
-          min="1"
-          max="200"
-          placeholder="Title"
-          value={title}
-          onChange={handleChange}
-          className={s.input}
-          required
-        />
-        <input
-          type="text"
-          name="author"
-          placeholder="Author"
-          value={author}
-          onChange={handleChange}
-          className={s.input}
-          required
-        />
-        <input
-          type="number"
-          name="quantity"
-          min="0"
-          step="1"
-          placeholder="Quantity"
-          value={quantity}
-          onChange={handleChange}
-          className={s.input}
-          required
-        />
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          value={price}
-          onChange={handleChange}
-          className={s.input}
-          required
-        />
+        <label className={s.label}>
+          Title
+          <input
+            type="text"
+            name="title"
+            min="1"
+            max="200"
+            placeholder="Enter book title"
+            value={title}
+            onChange={handleChange}
+            className={s.input}
+            required
+          />
+        </label>
+
+        <label className={s.label}>
+          Author
+          <input
+            type="text"
+            name="author"
+            placeholder="Enter author's name"
+            value={author}
+            onChange={handleChange}
+            className={s.input}
+            required
+          />
+        </label>
+        <label className={s.label}>
+          Price
+          <input
+            type="number"
+            name="price"
+            placeholder="Enter price"
+            value={price}
+            onChange={handleChange}
+            className={s.input}
+            required
+          />
+        </label>
+        <label className={s.label}>
+          Quantity
+          <input
+            type="number"
+            name="quantity"
+            min="0"
+            step="1"
+            placeholder="Enter quantity"
+            value={quantity}
+            onChange={handleChange}
+            className={s.input}
+            required
+          />
+        </label>
         <Button type="submit" btnClass="actionButton">
           {currentBook ? 'UPDATE BOOK' : 'ADD BOOK'}
         </Button>
