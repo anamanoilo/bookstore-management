@@ -1,7 +1,6 @@
 {
-  "name": "home-bluegreen-frontend",
+  "name": "bookstore-frontend",
   "description": "Home Assignment",
-  "author": "Glib Ischenko",
   "private": true,
   "license": "UNLICENSED",
   "version": "1.0.0",

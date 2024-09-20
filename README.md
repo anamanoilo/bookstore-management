@@ -1,6 +1,5 @@
-# BlueGreen home assignment
+# Bookstore Inventory Manager
 
-Bookstore Inventory Manager.
 The application is done using React for frontend, NestJS for backend, MongoDB for data storage.
 mongo-migrate is included to populate the database with initial data
 

@@ -1,7 +1,8 @@
+# Bookstore
 
 ## Description
 
-NestJS Backend for BlueGreen home assignment
+NestJS Backend for Bookstore
 
 ## Project setup
 

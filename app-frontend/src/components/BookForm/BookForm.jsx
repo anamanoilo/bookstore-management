@@ -48,7 +48,7 @@ const BookForm = ({ handleAddBook, handleUpdateBook, currentBook }) => {
       title,
       author,
       quantity: parseInt(quantity, 10),
-      price: price,
+      price: price.toString(),
     };
 
     if (currentBook) {

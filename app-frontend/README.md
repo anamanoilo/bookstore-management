@@ -1,4 +1,4 @@
-# BlueGreen Frontend
+# Bookstore Frontend
 
 Book Inventory Management system.
 
