@@ -26,3 +26,4 @@ The app was done in a limited time frame, so leaves out a few things.
 * make DELETE return 204 for subsequent deletes (200 returns an object first time)
 * omit __v property on GET responses
 * change _id to id in API responses
+* additional validation on Frontend for input fields before sending the API request
