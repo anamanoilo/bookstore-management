@@ -61,7 +61,7 @@ export class BooksController {
     try {
       return await this.booksService.update(id, updateBookDto);
     } catch (error) {
-      throw new NotFoundException(error);
+      throw new NotFoundException(error.message);
     }
   }
 

@@ -23,6 +23,6 @@ The app was done in a limited time frame, so leaves out a few things.
 * Frontend Dockerfile would be better based on some kind of nginx image, or some other tool best suited serving static files
 * Finish validation for MongoDB ObjectID for url params of API requests. It could have been a Transformation object instead of the simple validation pipe
 * PUT `/books/:id` could be changed from PATCH
-* make DELETE return 204 for subsequent deletes (200 returns an object)
+* make DELETE return 204 for subsequent deletes (200 returns an object first time)
 * omit __v property on GET responses
 * change _id to id in API responses
