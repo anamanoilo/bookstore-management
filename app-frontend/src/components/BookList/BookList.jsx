@@ -36,5 +36,4 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
   }
 };
 
-
 export default BookList;

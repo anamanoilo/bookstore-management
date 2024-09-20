@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
   padding: 1.25em;
   color: #333333;
@@ -8,18 +8,16 @@
   border-radius: 0.5em;
 }
 
-
 .buttonsContainer {
-  display: flex;       
-  gap: 0.75em;        
+  display: flex;
+  gap: 0.75em;
 }
-
 
 @media (max-width: 767px) {
   .wrapper {
     display: block;
   }
-  .buttonsContainer{
+  .buttonsContainer {
     margin-top: 1em;
   }
 }

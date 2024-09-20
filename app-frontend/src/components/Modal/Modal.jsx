@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import s from "./Modal.module.css";
+import PropTypes from 'prop-types';
+import s from './Modal.module.css';
 import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 

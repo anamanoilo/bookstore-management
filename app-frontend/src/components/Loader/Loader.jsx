@@ -1,5 +1,5 @@
-import { Audio } from "react-loader-spinner";
-import s from "./Loader.module.css";
+import { Audio } from 'react-loader-spinner';
+import s from './Loader.module.css';
 
 const Loader = () => {
   return (

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getBooks } from "../services/booksAPI";
+import { useEffect, useState } from 'react';
+import { getBooks } from '../services/booksAPI';
 
 export default function useFetchAndSetBooks() {
   const [books, setBooks] = useState(null);
@@ -13,7 +13,7 @@ export default function useFetchAndSetBooks() {
         const data = await getBooks();
         setBooks(data);
       } catch (err) {
-        console.error("Error fetching books:", err);
+        console.error('Error fetching books:', err);
         setError(err.message);
       } finally {
         setLoading(false);
