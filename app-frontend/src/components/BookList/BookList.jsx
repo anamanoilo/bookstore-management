@@ -1,7 +1,6 @@
 
 import s from "./BookList.module.css";
-import BookItem from "../BookItem";
-import Button from "../Button";
+import BookItem from '../BookItem';
 
 const BookList = ({ books, error, handleDeleteBook, editBook }) => {
   if (error) {
@@ -13,30 +12,10 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
         {books.map((book) => (
           <li key={book._id} className={s.bookItem}>
             <BookItem
-              title={book.title}
-              price={book.price}
-              author={book.author}
-              quantity={book.quantity}
-              // id={book._id}
-              // handleDeleteBook={handleDeleteBook}
-              // editBook={editBook}
+              book={book}
+              handleDeleteBook={handleDeleteBook}
+              editBook={editBook}
             />
-            <div>
-              <Button
-                btnClass="editButton"
-                type="button"
-                onClick={() => editBook(book)}
-              >
-                EDIT
-              </Button>
-              <Button
-                btnClass="deleteButton"
-                type="button"
-                onClick={() => handleDeleteBook(book._id)}
-              >
-                DELETE
-              </Button>
-            </div>
           </li>
         ))}
       </ul>

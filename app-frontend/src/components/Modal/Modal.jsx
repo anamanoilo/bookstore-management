@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import s from "./Modal.module.css";
+import { useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
-const modalRoot = document.querySelector("#modal-root");
+const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, closeModal }) => {
   const closeModalByEsc = useCallback(
     (e) => {
-      if (e.code === "Escape") {
+      if (e.code === 'Escape') {
         closeModal();
       }
     },
-    [closeModal]
+    [closeModal],
   );
 
   const closeByBackdropClick = (e) => {
@@ -20,9 +22,9 @@ const Modal = ({ children, closeModal }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", closeModalByEsc);
+    window.addEventListener('keydown', closeModalByEsc);
     return () => {
-      window.removeEventListener("keydown", closeModalByEsc);
+      window.removeEventListener('keydown', closeModalByEsc);
     };
   }, [closeModalByEsc]);
 
@@ -30,7 +32,7 @@ const Modal = ({ children, closeModal }) => {
     <div className={s.overlay} onClick={closeByBackdropClick}>
       <div className={s.modal}>{children}</div>
     </div>,
-    modalRoot
+    modalRoot,
   );
 };
 

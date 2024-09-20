@@ -1,0 +1,15 @@
+.form {
+display: grid;
+gap: 0.65em;
+}
+
+.input {
+padding: 0.5em;
+border-radius: 0.5em;
+border: 1px solid #76a8bd;
+outline: none;
+}
+
+.input:focus {
+  border: 1px solid #024153;
+}
