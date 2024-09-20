@@ -11,13 +11,15 @@ const BookList = ({ books, error, handleDeleteBook, editBook }) => {
     return books.length > 0 ? (
       <TransitionGroup component="ul" className={s.bookList}>
         {books.map((book) => (
-          <li key={book._id} className={s.bookItem}>
-            <BookItem
-              book={book}
-              handleDeleteBook={handleDeleteBook}
-              editBook={editBook}
-            />
-          </li>
+          <CSSTransition key={book._id} timeout={500} classNames={{ ...s }}>
+            <li className={s.bookItem}>
+              <BookItem
+                book={book}
+                handleDeleteBook={handleDeleteBook}
+                editBook={editBook}
+              />
+            </li>
+          </CSSTransition>
         ))}
       </TransitionGroup>
     ) : (
