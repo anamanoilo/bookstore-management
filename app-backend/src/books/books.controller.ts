@@ -52,7 +52,7 @@ export class BooksController {
   }
 
   @Patch(':id')
-  @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   async update(
     @Param()
     { id }: IdParam,

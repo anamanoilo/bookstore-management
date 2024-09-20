@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import s from './BookList.module.css';
 import BookItem from '../BookItem';
 
-
 const BookList = ({ books, error, handleDeleteBook, editBook }) => {
   const nodeRef = useRef(null);
 
